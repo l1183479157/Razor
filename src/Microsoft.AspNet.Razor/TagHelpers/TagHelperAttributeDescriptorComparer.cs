@@ -31,7 +31,8 @@ namespace Microsoft.AspNet.Razor.TagHelpers
         /// <remarks>
         /// Determines equality based on <see cref="TagHelperAttributeDescriptor.IsIndexer"/>,
         /// <see cref="TagHelperAttributeDescriptor.Name"/>, <see cref="TagHelperAttributeDescriptor.PropertyName"/>,
-        /// and <see cref="TagHelperAttributeDescriptor.TypeName"/>. Ignores
+        /// <see cref="TagHelperAttributeDescriptor.TypeName"/>, and
+        /// <see cref="TagHelperAttributeDescriptor.UsageDescriptor"/>. Ignores
         /// <see cref="TagHelperAttributeDescriptor.IsStringProperty"/> because it can be inferred directly from
         /// <see cref="TagHelperAttributeDescriptor.TypeName"/>.
         /// </remarks>
@@ -49,7 +50,10 @@ namespace Microsoft.AspNet.Razor.TagHelpers
                 descriptorX.IsIndexer == descriptorY.IsIndexer &&
                 string.Equals(descriptorX.Name, descriptorY.Name, StringComparison.OrdinalIgnoreCase) &&
                 string.Equals(descriptorX.PropertyName, descriptorY.PropertyName, StringComparison.Ordinal) &&
-                string.Equals(descriptorX.TypeName, descriptorY.TypeName, StringComparison.Ordinal);
+                string.Equals(descriptorX.TypeName, descriptorY.TypeName, StringComparison.Ordinal) &&
+                TagHelperUsageDescriptorComparer.Default.Equals(
+                    descriptorX.UsageDescriptor,
+                    descriptorY.UsageDescriptor);
         }
 
         /// <inheritdoc />
@@ -62,6 +66,7 @@ namespace Microsoft.AspNet.Razor.TagHelpers
                 .Add(descriptor.Name, StringComparer.OrdinalIgnoreCase)
                 .Add(descriptor.PropertyName, StringComparer.Ordinal)
                 .Add(descriptor.TypeName, StringComparer.Ordinal)
+                .Add(TagHelperUsageDescriptorComparer.Default.GetHashCode(descriptor.UsageDescriptor))
                 .CombinedHash;
         }
     }
