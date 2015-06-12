@@ -42,10 +42,11 @@ namespace Microsoft.AspNet.Razor.Runtime.TagHelpers
             var expectedErrorMessage = "Cannot resolve TagHelper containing assembly 'abcd'. Error: " +
                 "Could not load file or assembly '" +
 #if DNX451
-                "abcd' or one of its dependencies. The system cannot find the file specified.";
+                "abcd' or one of its dependencies" +
+                (!PlatformHelper.IsMono ? ". The system cannot find the file specified." : "");
 #else
-                "abcd, Culture=neutral, PublicKeyToken=null' or one of its dependencies. " +
-                "The system cannot find the file specified.";
+                "abcd, Culture=neutral, PublicKeyToken=null' or one of its dependencies" +
+                (!PlatformHelper.IsMono ? ". The system cannot find the file specified." : "");
 #endif
 
             // Act
