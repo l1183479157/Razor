@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>Microsoft.AspNet.Razor.Runtime.Test</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.AspNet.Razor.Runtime.TagHelpers.DocumentedTagHelper">
+      <summary>
+        en: The summary for the type.
+      </summary>
+      <remarks>
+        en: The remarks for the type.
+      </remarks>
+    </member>
+    <member name="P:Microsoft.AspNet.Razor.Runtime.TagHelpers.DocumentedTagHelper.SummaryProperty">
+      <summary>
+        en: The summary for a property.
+      </summary>
+    </member>
+    <member name="P:Microsoft.AspNet.Razor.Runtime.TagHelpers.DocumentedTagHelper.RemarksProperty">
+      <remarks>
+        en: The remarks for a property.
+      </remarks>
+    </member>
+    <member name="P:Microsoft.AspNet.Razor.Runtime.TagHelpers.DocumentedTagHelper.RemarksAndSummaryProperty">
+      <summary>
+        en: The summary for a property with remarks.
+      </summary>
+      <remarks>
+        en: The remarks for a property with summary.
+      </remarks>
+    </member>
+  </members>
+</doc>
